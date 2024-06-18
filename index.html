@@ -1,1 +1,180 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Company Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .banner img {
+            vertical-align: middle;
+        }
+        .banner h1 {
+            display: inline;
+            margin-left: 10px;
+            font-size: 2em;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .navbar select {
+            float: right;
+            margin: 14px 16px;
+            padding: 4px;
+        }
+        .section {
+            padding: 20px;
+        }
+        .section:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <img src="logo.png" alt="Company Logo" width="50" height="50">
+        <h1 id="company-name">Company Name</h1>
+    </div>
+
+    <div class="navbar">
+        <a href="#home" id="nav-home">Home</a>
+        <a href="#about" id="nav-about">About</a>
+        <a href="#services" id="nav-services">Services</a>
+        <a href="#contact" id="nav-contact">Contact</a>
+        <select id="language-select" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+        </select>
+    </div>
+
+    <div id="home" class="section">
+        <h2 id="home-title">Home</h2>
+        <p id="home-content">Welcome to our company website. We are glad to have you here.</p>
+    </div>
+
+    <div id="about" class="section">
+        <h2 id="about-title">About Us</h2>
+        <p id="about-content">Learn more about our company, our values, and our mission.</p>
+    </div>
+
+    <div id="services" class="section">
+        <h2 id="services-title">Our Services</h2>
+        <p id="services-content">We offer a wide range of services to meet your needs.</p>
+    </div>
+
+    <div id="contact" class="section">
+        <h2 id="contact-title">Contact Us</h2>
+        <p id="contact-content">Get in touch with us through our contact form or by phone.</p>
+    </div>
+
+    <footer>
+        <p id="footer-content">&copy; 2024 Company Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const content = {
+            en: {
+                companyName: "Company Name",
+                navHome: "Home",
+                navAbout: "About",
+                navServices: "Services",
+                navContact: "Contact",
+                homeTitle: "Home",
+                homeContent: "Welcome to our company website. We are glad to have you here.",
+                aboutTitle: "About Us",
+                aboutContent: "Learn more about our company, our values, and our mission.",
+                servicesTitle: "Our Services",
+                servicesContent: "We offer a wide range of services to meet your needs.",
+                contactTitle: "Contact Us",
+                contactContent: "Get in touch with us through our contact form or by phone.",
+                footerContent: "&copy; 2024 Company Name. All rights reserved."
+            },
+            es: {
+                companyName: "Nombre de la Empresa",
+                navHome: "Inicio",
+                navAbout: "Acerca de",
+                navServices: "Servicios",
+                navContact: "Contacto",
+                homeTitle: "Inicio",
+                homeContent: "Bienvenido a nuestro sitio web. Nos alegra tenerte aquí.",
+                aboutTitle: "Acerca de Nosotros",
+                aboutContent: "Conoce más sobre nuestra empresa, nuestros valores y nuestra misión.",
+                servicesTitle: "Nuestros Servicios",
+                servicesContent: "Ofrecemos una amplia gama de servicios para satisfacer sus necesidades.",
+                contactTitle: "Contáctanos",
+                contactContent: "Póngase en contacto con nosotros a través de nuestro formulario de contacto o por teléfono.",
+                footerContent: "&copy; 2024 Nombre de la Empresa. Todos los derechos reservados."
+            },
+            fr: {
+                companyName: "Nom de l'Entreprise",
+                navHome: "Accueil",
+                navAbout: "À propos",
+                navServices: "Services",
+                navContact: "Contact",
+                homeTitle: "Accueil",
+                homeContent: "Bienvenue sur notre site web. Nous sommes heureux de vous avoir ici.",
+                aboutTitle: "À propos de Nous",
+                aboutContent: "En savoir plus sur notre entreprise, nos valeurs et notre mission.",
+                servicesTitle: "Nos Services",
+                servicesContent: "Nous offrons une large gamme de services pour répondre à vos besoins.",
+                contactTitle: "Contactez-Nous",
+                contactContent: "Contactez-nous via notre formulaire de contact ou par téléphone.",
+                footerContent: "&copy; 2024 Nom de l'Entreprise. Tous droits réservés."
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('language-select').value;
+            document.getElementById('company-name').innerText = content[lang].companyName;
+            document.getElementById('nav-home').innerText = content[lang].navHome;
+            document.getElementById('nav-about').innerText = content[lang].navAbout;
+            document.getElementById('nav-services').innerText = content[lang].navServices;
+            document.getElementById('nav-contact').innerText = content[lang].navContact;
+            document.getElementById('home-title').innerText = content[lang].homeTitle;
+            document.getElementById('home-content').innerText = content[lang].homeContent;
+            document.getElementById('about-title').innerText = content[lang].aboutTitle;
+            document.getElementById('about-content').innerText = content[lang].aboutContent;
+            document.getElementById('services-title').innerText = content[lang].servicesTitle;
+            document.getElementById('services-content').innerText = content[lang].servicesContent;
+            document.getElementById('contact-title').innerText = content[lang].contactTitle;
+            document.getElementById('contact-content').innerText = content[lang].contactContent;
+            document.getElementById('footer-content').innerHTML = content[lang].footerContent;
+        }
+    </script>
+
+</body>
+</html>
